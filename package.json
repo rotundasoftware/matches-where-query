@@ -1,7 +1,7 @@
 {
-  "name": "matches-where-object",
+  "name": "matches-where-query",
   "version": "1.0.0",
-  "main": "matchesWhereObject.js",
+  "main": "matchesWhereQuery.js",
   "devDependencies": {
     "@rotundasoftware/eslint-config-rotundasoftware": "^2.1.0",
     "eslint": "^5.14.1"
