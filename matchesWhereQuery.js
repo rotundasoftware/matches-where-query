@@ -1,6 +1,6 @@
 var _ = require( 'underscore' );
 
-export default function( object, whereQueryObject ) {
+module.exports = function( object, whereQueryObject ) {
 	for( const thisKey in whereQueryObject ) {
 		const thisKeyQuery = whereQueryObject[ thisKey ];
 
