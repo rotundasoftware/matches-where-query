@@ -1,4 +1,4 @@
-import _ from 'underscore';
+var _ = require( 'underscore' );
 
 export default function( object, whereQueryObject ) {
 	for( const thisKey in whereQueryObject ) {
