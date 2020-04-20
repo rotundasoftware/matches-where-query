@@ -17,8 +17,6 @@ This function determines if the provided `object` matches every comparison claus
 For each clause in `whereQueryObject`, an attribute of `object` is compared to a value (primitive or object.)
 
 ## equals (default)
-Each attribute is compared to either a value or an array of values.
-
 ### Single Value
 If the attribute is a single value, `object.attribute` must strictly equal the value to result in a match.
 
