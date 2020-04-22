@@ -1,8 +1,8 @@
-# matchesWhereObject( object, whereQueryObject )
+# matchesWhereQuery( object, whereQuery )
 
-This function determines if the provided `object` matches every comparison clause in `whereQueryObject`, returning `true` or `false` accordingly.
+This function determines if the provided `object` matches every comparison clause in `whereQuery`, returning `true` or `false` accordingly.
 
-`whereQueryObject` is an object of the form:
+`whereQuery` is an object of the form:
 
 
 ```
@@ -14,7 +14,7 @@ This function determines if the provided `object` matches every comparison claus
 ```
 
 # Comparisons
-For each clause in `whereQueryObject`, an attribute of `object` is compared to a value (primitive or object.)
+For each clause in `whereQuery`, an attribute of `object` is compared to a value (primitive or object.)
 
 ## equals (default)
 ### Single Value
