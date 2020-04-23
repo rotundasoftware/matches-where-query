@@ -1,8 +1,8 @@
 var _ = require( 'underscore' );
 
-module.exports = function( object, whereQueryObject ) {
-	for( const thisKey in whereQueryObject ) {
-		const thisKeyQuery = whereQueryObject[ thisKey ];
+module.exports = function( object, whereQuery ) {
+	for( const thisKey in whereQuery ) {
+		const thisKeyQuery = whereQuery[ thisKey ];
 		const thisObjectValue = object[ thisKey ];
 
 		if( _.isObject( thisKeyQuery ) && thisKeyQuery.comparator ) {
