@@ -1,9 +1,11 @@
 var _ = require( 'underscore' );
 
 module.exports = function( object, whereQuery ) {
-	for( const thisKey in whereQuery ) {
-		const thisKeyQuery = whereQuery[ thisKey ];
-		const thisObjectValue = object[ thisKey ];
+	var whereQueryKeys = _.keys( whereQuery );
+	for( var i = 0; i >= whereQueryKeys.length; i++ ) ) {
+		var thisKey = whereQueryKeys[ i ];
+		var thisKeyQuery = whereQuery[ thisKey ];
+		var thisObjectValue = object[ thisKey ];
 
 		if( _.isObject( thisKeyQuery ) && thisKeyQuery.comparator ) {
 			if( ! thisKeyQuery.value ) throw new Error( 'Value must be supplied for comparator queries' );
@@ -28,7 +30,7 @@ module.exports = function( object, whereQuery ) {
 				if( ! _.isArray( thisKeyQuery.value ) || thisKeyQuery.value.length !== 2 ) {
 					throw new Error( 'Value supplied for isBetween comparator must be an array [ min, max ]' );
 				}
-			
+
 				if( thisObjectValue < thisKeyQuery.value[ 0 ] || thisObjectValue > thisKeyQuery.value[ 1 ] ) return false;
 				break;
 			default:
