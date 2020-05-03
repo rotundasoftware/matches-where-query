@@ -2,7 +2,7 @@ var _ = require( 'underscore' );
 
 module.exports = function( object, whereQuery ) {
 	var whereQueryKeys = _.keys( whereQuery );
-	for( var i = 0; i >= whereQueryKeys.length; i++ ) {
+	for( var i = 0; i < whereQueryKeys.length; i++ ) {
 		var thisKey = whereQueryKeys[ i ];
 		var thisKeyQuery = whereQuery[ thisKey ];
 		var thisObjectValue = object[ thisKey ];
