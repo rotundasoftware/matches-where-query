@@ -1,11 +1,9 @@
-var _ = require( 'underscore' );
+const _ = require( 'underscore' );
 
 module.exports = function( object, whereQuery ) {
-	var whereQueryKeys = _.keys( whereQuery );
-	for( var i = 0; i < whereQueryKeys.length; i++ ) {
-		var thisKey = whereQueryKeys[ i ];
-		var thisKeyQuery = whereQuery[ thisKey ];
-		var thisObjectValue = object[ thisKey ];
+	for( const thisKey in whereQuery ) {
+		const thisKeyQuery = whereQuery[ thisKey ];
+		const thisObjectValue = object[ thisKey ];
 
 		if( _.isObject( thisKeyQuery ) && thisKeyQuery.comparator ) {
 			if( ! thisKeyQuery.value ) throw new Error( 'Value must be supplied for comparator queries' );

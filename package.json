@@ -1,8 +1,19 @@
 {
   "name": "matches-where-query",
   "version": "1.1.4",
-  "main": "matchesWhereQuery.js",
+  "main": "dst/matchesWhereQuery.js",
+  "scripts": {
+    "prepublish": "babel src -d lib"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "@rotundasoftware/eslint-config-rotundasoftware": "^2.1.0",
     "eslint": "^5.14.1"
   },
