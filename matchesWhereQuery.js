@@ -55,29 +55,21 @@ module.exports = function( object, whereQuery ) {
 	return true;
 };
 
-function _startsWith( str, starts, position ) {
+function _startsWith( str, starts ) {
 	str = _makeString( str );
 	starts = String( starts );
-	position = position === null ? 0 : Math.min( _toPositive( position ), str.length );
-	return str.lastIndexOf( starts, position ) === position;
+	return str.lastIndexOf( starts, 0 ) === 0;
 }
 
-function _endsWith( str, ends, position ) {
+function _endsWith( str, ends ) {
 	str = _makeString( str );
 	ends = String( ends );
-	if( typeof position === 'undefined' ) {
-		position = str.length - ends.length;
-	} else {
-		position = Math.min( _toPositive( position ), str.length ) - ends.length;
-	}
+	var position = str.length - ends.length;
+
 	return position >= 0 && str.indexOf( ends, position ) === position;
 }
 
 function _makeString( object ) {
 	if( ! object ) return '';
 	return String( object );
-}
-
-function _toPositive( number ) {
-	return number < 0 ? 0 : ( Number( number ) || 0 );
 }
