@@ -2,34 +2,28 @@ var chai = require( 'chai' );
 var matchesWhereQuery = require( '../matchesWhereQuery' );
 var expect = chai.expect;
 
-var people = [ {
-	firstName : 'Martin',
-	lastName : 'Flores',
-	height : 172,
-	city : 'Buenos Aires' },
-{
-	firstName : 'Leonardo',
-	lastName : 'Flores',
-	height : 166,
-	city : 'Buenos Aires' },
-{
-	firstName : 'Martin',
-	lastName : 'Gonzalez',
-	height : 171,
-	city : 'Rosario' }
-];
-
 describe( 'Matches where query Test', function() {
+	var person;
+
+	beforeEach( function() {
+		person = {
+			firstName : 'Martin',
+			lastName : 'Flores',
+			height : 172,
+			city : 'Buenos Aires' 
+		};
+	} );
+
 	describe( 'startsWith', function() {
 		it( 'Simple Match', function() {
 			var comparator = { firstName : { comparator : 'startsWith', value : 'Mar' } };
 	
-			expect( matchesWhereQuery( people[ 0 ], comparator ) ).to.be.true;
+			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
 		it( 'Simple Not Match', function() {
-			var comparator = { firstName : { comparator : 'startsWith', value : 'Mar' } };
-			var match = matchesWhereQuery( people[ 1 ], comparator );
+			var comparator = { firstName : { comparator : 'startsWith', value : 'Mer' } };
+			var match = matchesWhereQuery( person, comparator );
 
 			expect( match ).to.be.false;
 		} );
@@ -38,14 +32,14 @@ describe( 'Matches where query Test', function() {
 	describe( 'endsWith', function() {
 		it( 'Simple Match', function() {
 			var comparator = { firstName : { comparator : 'endsWith', value : 'tin' } };
-			var match = matchesWhereQuery( people[ 0 ], comparator );
+			var match = matchesWhereQuery( person, comparator );
 
 			expect( match ).to.be.true;
 		} );
 
 		it( 'Simple Not Match', function() {
-			var comparator = { firstName : { comparator : 'endsWith', value : 'tin' } };
-			var match = matchesWhereQuery( people[ 1 ], comparator );
+			var comparator = { firstName : { comparator : 'endsWith', value : 'nit' } };
+			var match = matchesWhereQuery( person, comparator );
 
 			expect( match ).to.be.false;
 		} );
@@ -58,7 +52,7 @@ describe( 'Matches where query Test', function() {
 				height : { comparator : 'isGreaterThan', value : 171 }
 			};
 
-			var match = matchesWhereQuery( people[ 0 ], comparator );
+			var match = matchesWhereQuery( person, comparator );
 
 			expect( match ).to.be.true;
 		} );
@@ -66,10 +60,10 @@ describe( 'Matches where query Test', function() {
 		it( 'Not match', function() {
 			var comparator = {
 				firstName : { comparator : 'endsWith', value : 'tin' },
-				height : { comparator : 'isGreaterThan', value : 171 }
+				height : { comparator : 'isLessThanOrEqualTo', value : 171 }
 			};
 
-			var match = matchesWhereQuery( people[ 2 ], comparator );
+			var match = matchesWhereQuery( person, comparator );
 
 			expect( match ).to.be.false;
 		} );
