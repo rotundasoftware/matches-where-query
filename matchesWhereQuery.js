@@ -58,12 +58,10 @@ module.exports = function( object, whereQuery ) {
 };
 
 function _startsWith( str, starts ) {
-	starts = String( starts );
 	return str.lastIndexOf( starts, 0 ) === 0;
 }
 
 function _endsWith( str, ends ) {
-	ends = String( ends );
 	var position = str.length - ends.length;
 
 	return position >= 0 && str.indexOf( ends, position ) === position;
