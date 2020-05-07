@@ -2,9 +2,12 @@
   "name": "matches-where-query",
   "version": "1.1.5",
   "main": "matchesWhereQuery.js",
+  "scripts": {
+    "test": "mocha tests/test.js --reporter spec"
+  },
   "devDependencies": {
-    "@rotundasoftware/eslint-config-rotundasoftware": "^2.1.0",
-    "eslint": "^5.14.1"
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0"
   },
   "dependencies": {
     "underscore": "^1.9.1"
