@@ -86,3 +86,21 @@ The compared attribute must be between the minimum and maximum values provided t
 	<attribute> : { comparator : 'isBetween', value : [ <minValue>, <maxValue> ] }
 }
 ```
+
+## startsWith
+The compared attribute must be a string that starts with the string value provided to result in a match.
+
+```
+{
+	<attribute> : { comparator : 'startsWith', value : <value> }
+}
+```
+
+## endsWith
+The compared attribute must be a string that ends with the string value provided to result in a match.
+
+```
+{
+	<attribute> : { comparator : 'endsWith', value : <value> }
+}
+```
