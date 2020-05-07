@@ -3,9 +3,9 @@ var _ = require( 'underscore' );
 module.exports = function( object, whereQuery ) {
 	var whereQueryKeys = _.keys( whereQuery );
 	for( var i = 0; i < whereQueryKeys.length; i++ ) {
-		var attribute = whereQueryKeys[ i ];
-		var queryAttribute = whereQuery[ attribute ];
-		var objectAttribute = object[ attribute ];
+		var attributeName = whereQueryKeys[ i ];
+		var queryAttribute = whereQuery[ attributeName ];
+		var objectAttribute = object[ attributeName ];
 
 		if( _.isObject( queryAttribute ) && queryAttribute.comparator ) {
 			if( ! queryAttribute.value ) throw new Error( 'Value must be supplied for comparator queries' );
@@ -34,11 +34,13 @@ module.exports = function( object, whereQuery ) {
 				if( objectAttribute < queryAttribute.value[ 0 ] || objectAttribute > queryAttribute.value[ 1 ] ) return false;
 				break;
 			case 'startsWith':
+				if( ! objectAttribute ) return false;
 				// eslint-disable-next-line max-len
 				if( ! _.isString( objectAttribute ) || ! _.isString( queryAttribute.value ) ) throw new Error( 'For startsWith comparator both the object attribute and the query value must be strings.' );
 				if( ! _startsWith( objectAttribute, queryAttribute.value ) ) return false;
 				break;
 			case 'endsWith':
+				if( ! objectAttribute ) return false;
 				// eslint-disable-next-line max-len
 				if( ! _.isString( objectAttribute ) || ! _.isString( queryAttribute.value ) ) throw new Error( 'For endsWith comparator both the object attribute and the query value must be strings.' );
 				if( ! _endsWith( objectAttribute, queryAttribute.value ) ) return false;
@@ -56,20 +58,14 @@ module.exports = function( object, whereQuery ) {
 };
 
 function _startsWith( str, starts ) {
-	str = _makeString( str );
 	starts = String( starts );
 	return str.lastIndexOf( starts, 0 ) === 0;
 }
 
 function _endsWith( str, ends ) {
-	str = _makeString( str );
 	ends = String( ends );
 	var position = str.length - ends.length;
 
 	return position >= 0 && str.indexOf( ends, position ) === position;
 }
 
-function _makeString( object ) {
-	if( ! object ) return '';
-	return String( object );
-}
