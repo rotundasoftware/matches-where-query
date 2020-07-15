@@ -19,10 +19,7 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "chai": "^4.2.0",
-    "mocha": "^6.2.0",
-    "@rotundasoftware/eslint-config-rotundasoftware": "^2.1.0",
-    "eslint": "^4.0.0",
-    "eslint-plugin-mocha": "^4.0.0"
+    "mocha": "^6.2.0"
   },
   "dependencies": {
     "underscore": "^1.9.1"
