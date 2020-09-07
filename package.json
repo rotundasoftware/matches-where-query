@@ -1,7 +1,7 @@
 {
   "name": "matches-where-query",
   "version": "1.1.5",
-  "main": "dst/matchesWhereQuery.js",
+  "main": "lib/matchesWhereQuery.js",
   "scripts": {
     "prepublishOnly": "npm install --only=dev && babel src -d lib",
     "test": "babel src -d lib && mocha tests/test.js --reporter spec",
