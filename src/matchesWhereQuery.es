@@ -1,11 +1,9 @@
-var _ = require( 'underscore' );
+import _ from 'underscore';
 
 module.exports = function( object, whereQuery ) {
-	var whereQueryKeys = _.keys( whereQuery );
-	for( var i = 0; i < whereQueryKeys.length; i++ ) {
-		var attributeName = whereQueryKeys[ i ];
-		var queryAttribute = whereQuery[ attributeName ];
-		var objectAttribute = object[ attributeName ];
+	for( const attributeName in whereQuery ) {
+		const queryAttribute = whereQuery[ attributeName ];
+		const objectAttribute = object[ attributeName ];
 
 		if( _.isObject( queryAttribute ) && queryAttribute.comparator ) {
 			if( ! queryAttribute.value ) throw new Error( 'Value must be supplied for comparator queries' );
@@ -62,7 +60,7 @@ function _startsWith( str, starts ) {
 }
 
 function _endsWith( str, ends ) {
-	var position = str.length - ends.length;
+	const position = str.length - ends.length;
 
 	return position >= 0 && str.indexOf( ends, position ) === position;
 }

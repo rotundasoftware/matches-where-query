@@ -1,11 +1,23 @@
 {
   "name": "matches-where-query",
   "version": "1.1.5",
-  "main": "matchesWhereQuery.js",
+  "main": "lib/matchesWhereQuery.js",
   "scripts": {
-    "test": "mocha tests/test.js --reporter spec"
+    "prepublishOnly": "npm install --only=dev && babel src -d lib",
+    "test": "babel src -d lib && mocha tests/test.js --reporter spec",
+    "eslint": "eslint --ext '.es' .",
+    "eslint:strict": "eslint --ext '.es' . --max-warnings=0",
+    "prepush": "npm run eslint:strict"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "chai": "^4.2.0",
     "mocha": "^6.2.0"
   },

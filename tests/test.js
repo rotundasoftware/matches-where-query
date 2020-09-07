@@ -1,6 +1,6 @@
 var _ = require( 'underscore' );
 var chai = require( 'chai' );
-var matchesWhereQuery = require( '../matchesWhereQuery' );
+var matchesWhereQuery = require( '../lib/matchesWhereQuery' );
 var expect = chai.expect;
 
 describe( 'Matches where query Test', function() {
