@@ -6,7 +6,7 @@ module.exports = function( object, whereQuery ) {
 		const objectAttribute = object[ attributeName ];
 
 		if( _.isObject( queryAttribute ) && queryAttribute.comparator ) {
-			if( ! queryAttribute.value ) throw new Error( 'Value must be supplied for comparator queries' );
+			if( _.isUndefined( queryAttribute.value ) ) throw new Error( 'Value must be supplied for comparator queries' );
 
 			switch( queryAttribute.comparator ) {
 			case 'doesNotEqual':
