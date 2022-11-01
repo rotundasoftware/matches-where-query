@@ -1,6 +1,6 @@
 {
   "name": "matches-where-query",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "lib/matchesWhereQuery.js",
   "scripts": {
     "prepublishOnly": "npm install --only=dev && babel src -d lib",
