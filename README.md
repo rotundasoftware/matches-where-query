@@ -35,7 +35,7 @@ If the attribute is is an array, only records for which `object.attribute` is st
 }
 ```
 
-## doesNotEquals
+## doesNotEqual
 The compared attribute must must not be strictly equal to the value to result in a match.
 
 ```
