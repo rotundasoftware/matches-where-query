@@ -9,12 +9,13 @@ This function determines if the provided `object` matches every comparison claus
 {
 	<attribute> : <value>
 	<attribute> : [ <value1>, ..., <valueN> ]
+	<attribute> : { comparator : <comparator> }
 	<attribute> : { comparator : <comparator>, value : <value> }
 }
 ```
 
 # Comparisons
-For each clause in `whereQuery`, an attribute of `object` is compared to a value (primitive or object.)
+For each clause in `whereQuery`, an attribute of `object` is compared to a value (primitive or object.) except in the cases of the `isNull` and `isNotNull` comparators, which do not require for a value to be provided.
 
 ## equals (default)
 ### Single Value
@@ -102,5 +103,23 @@ The compared attribute must be a string that ends with the string value provided
 ```
 {
 	<attribute> : { comparator : 'endsWith', value : <value> }
+}
+```
+
+## isNull
+The compared attribute must be null to result in a match (no value needs to be provided).
+
+```
+{
+	<attribute> : { comparator : 'isNull' }
+}
+```
+
+## isNotNull
+The compared attribute must not be null to result in a match (no value needs to be provided).
+
+```
+{
+	<attribute> : { comparator : 'isNotNull' }
 }
 ```

@@ -6,7 +6,7 @@ module.exports = function( object, whereQuery ) {
 		const objectAttribute = object[ attributeName ];
 
 		if( _.isObject( queryAttribute ) && queryAttribute.comparator ) {
-			if( _.isUndefined( queryAttribute.value ) ) throw new Error( 'Value must be supplied for comparator queries' );
+			if( _.isUndefined( queryAttribute.value ) && ! [ 'isNull', 'isNotNull' ].includes( queryAttribute.comparator ) ) throw new Error( 'Value must be supplied for comparator queries' );
 
 			switch( queryAttribute.comparator ) {
 			case 'doesNotEqual':
@@ -42,6 +42,12 @@ module.exports = function( object, whereQuery ) {
 				// eslint-disable-next-line max-len
 				if( ! _.isString( objectAttribute ) || ! _.isString( queryAttribute.value ) ) throw new Error( 'For endsWith comparator both the object attribute and the query value must be strings.' );
 				if( ! _endsWith( objectAttribute, queryAttribute.value ) ) return false;
+				break;
+			case 'isNull':
+				if( ! _.isNull( objectAttribute )  ) return false;
+				break;
+			case 'isNotNull':
+				if( _.isNull( objectAttribute )  ) return false;
 				break;
 			default:
 				throw new Error ( 'Invalid comparator ' + queryAttribute.comparator );

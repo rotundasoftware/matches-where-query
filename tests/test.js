@@ -11,7 +11,8 @@ describe( 'Matches where query Test', function() {
 			firstName : 'Martin',
 			lastName : 'Flores',
 			height : 172,
-			city : 'Buenos Aires' 
+			city : 'Buenos Aires',
+			age : null
 		};
 	} );
 
@@ -203,6 +204,34 @@ describe( 'Matches where query Test', function() {
 			var comparator = { firstName : { comparator : 'endsWith' } };
 
 			expect( () => matchesWhereQuery( person, comparator ) ).to.throw();
+		} );
+	} );
+
+	describe( 'isNull', function() {
+		it( 'Match', function() {
+			var comparator = { age : { comparator : 'isNull' } };
+	
+			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
+		} );
+
+		it( 'Not Match', function() {
+			var comparator = { firstName : { comparator : 'isNull' } };
+
+			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
+		} );
+	} );
+	
+	describe( 'isNotNull', function() {
+		it( 'Match', function() {
+			var comparator = { firstName : { comparator : 'isNotNull' } };
+	
+			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
+		} );
+
+		it( 'Not Match', function() {
+			var comparator = { age : { comparator : 'isNotNull' } };
+
+			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
 		} );
 	} );
 } );
