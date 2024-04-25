@@ -10,26 +10,25 @@ module.exports = function( object, whereQuery ) {
 
 			switch( queryAttribute.comparator ) {
 			case 'doesNotEqual':
-				if( objectAttribute === queryAttribute.value ) return false;
+				if( ! objectAttribute || objectAttribute === queryAttribute.value ) return false;
 				break;
 			case 'isGreaterThan':
-				if( objectAttribute <= queryAttribute.value ) return false;
+				if( ! objectAttribute || objectAttribute <= queryAttribute.value ) return false;
 				break;
 			case 'isGreaterThanOrEqualTo':
-				if( objectAttribute < queryAttribute.value ) return false;
+				if( ! objectAttribute || objectAttribute < queryAttribute.value ) return false;
 				break;
 			case 'isLessThan':
-				if( objectAttribute >= queryAttribute.value ) return false;
+				if( ! objectAttribute || objectAttribute >= queryAttribute.value ) return false;
 				break;
 			case 'isLessThanOrEqualTo':
-				if( objectAttribute > queryAttribute.value ) return false;
+				if( ! objectAttribute || objectAttribute > queryAttribute.value ) return false;
 				break;
 			case 'isBetween':
 				if( ! _.isArray( queryAttribute.value ) || queryAttribute.value.length !== 2 ) {
 					throw new Error( 'Value supplied for isBetween comparator must be an array [ min, max ]' );
 				}
-
-				if( objectAttribute < queryAttribute.value[ 0 ] || objectAttribute > queryAttribute.value[ 1 ] ) return false;
+				if( ! objectAttribute ||  objectAttribute < queryAttribute.value[ 0 ] || objectAttribute > queryAttribute.value[ 1 ] ) return false;
 				break;
 			case 'startsWith':
 				if( ! objectAttribute ) return false;
