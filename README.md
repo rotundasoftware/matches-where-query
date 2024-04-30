@@ -46,7 +46,7 @@ The compared attribute must must not be strictly equal to the value to result in
 ```
 
 ## isGreaterThan
-The compared attribute must be greater than the value to result in a match.
+The compared attribute must be greater than the value to result in a match. `NULL` values are automatically discarded.
 ```
 {
 	<attribute> : { comparator : 'isGreaterThan', value : <value> }
@@ -54,7 +54,7 @@ The compared attribute must be greater than the value to result in a match.
 ```
 
 ## isGreaterThanOrEqualTo
-The compared attribute must be greater than or equal to the value to result in a match.
+The compared attribute must be greater than or equal to the value to result in a match. `NULL` values are automatically discarded.
 
 ```
 {
@@ -63,7 +63,7 @@ The compared attribute must be greater than or equal to the value to result in a
 ```
 
 ## isLessThan
-The compared attribute must be less than the value to result in a match.
+The compared attribute must be less than the value to result in a match. `NULL` values are automatically discarded.
 
 ```
 {
@@ -72,7 +72,7 @@ The compared attribute must be less than the value to result in a match.
 ```
 
 ## isLessThanOrEqualTo
-The compared attribute must be less than or equal to the value to result in a match.
+The compared attribute must be less than or equal to the value to result in a match. `NULL` values are automatically discarded.
 ```
 {
 	<attribute> : { comparator : 'isLessThanOrEqualTo', value : <value> }
@@ -80,7 +80,7 @@ The compared attribute must be less than or equal to the value to result in a ma
 ```
 
 ## isBetween
-The compared attribute must be between the minimum and maximum values provided to result in a match. The limits provided are included in the range for the value. 
+The compared attribute must be between the minimum and maximum values provided to result in a match. The limits provided are included in the range for the value. `NULL` values are automatically discarded.
 
 ```
 {
@@ -89,7 +89,7 @@ The compared attribute must be between the minimum and maximum values provided t
 ```
 
 ## startsWith
-The compared attribute must be a string that starts with the string value provided to result in a match.
+The compared attribute must be a string that starts with the string value provided to result in a match. `NULL` values are automatically discarded.
 
 ```
 {
@@ -98,7 +98,7 @@ The compared attribute must be a string that starts with the string value provid
 ```
 
 ## endsWith
-The compared attribute must be a string that ends with the string value provided to result in a match.
+The compared attribute must be a string that ends with the string value provided to result in a match. `NULL` values are automatically discarded.
 
 ```
 {
