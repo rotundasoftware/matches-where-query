@@ -10,7 +10,7 @@ module.exports = function( object, whereQuery ) {
 
 			switch( queryAttribute.comparator ) {
 			case 'doesNotEqual':
-				if( ! objectAttribute || objectAttribute === queryAttribute.value ) return false;
+				if( objectAttribute === queryAttribute.value ) return false;
 				break;
 			case 'isGreaterThan':
 				if( ! objectAttribute || objectAttribute <= queryAttribute.value ) return false;
