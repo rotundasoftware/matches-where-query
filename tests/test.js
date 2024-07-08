@@ -12,7 +12,8 @@ describe( 'Matches where query Test', function() {
 			lastName : 'Flores',
 			height : 172,
 			city : 'Buenos Aires',
-			age : null
+			age : null,
+			permissions : [ 'read', 'write' ]
 		};
 	} );
 
@@ -230,6 +231,46 @@ describe( 'Matches where query Test', function() {
 
 		it( 'Not Match', function() {
 			var comparator = { age : { comparator : 'isNotNull' } };
+
+			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
+		} );
+	} );
+	
+	describe( 'isNotNull', function() {
+		it( 'Match', function() {
+			var comparator = { firstName : { comparator : 'isNotNull' } };
+	
+			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
+		} );
+
+		it( 'Not Match', function() {
+			var comparator = { age : { comparator : 'isNotNull' } };
+
+			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
+		} );
+	} );
+	
+	describe( 'contains', function() {
+		it( 'Match - when string', function() {
+			var comparator = { firstName : { comparator : 'contains', value : 'ar' } };
+	
+			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
+		} );
+
+		it( 'Not Match - when string', function() {
+			var comparator = { firstName : { comparator : 'contains', value : 'no' } };
+
+			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
+		} );
+
+		it( 'Match - when array', function() {
+			var comparator = { permissions : { comparator : 'contains', value : 'read' } };
+	
+			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
+		} );
+
+		it( 'Not Match - when string', function() {
+			var comparator = { permissions : { comparator : 'contains', value : 'delete' } };
 
 			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
 		} );

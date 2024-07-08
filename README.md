@@ -36,6 +36,17 @@ If the attribute is is an array, only records for which `object.attribute` is st
 }
 ```
 
+## contains
+
+The compared attribute must be a string that contains the provided value, or an array that has at least one element strictly equal to the provided value.
+
+```
+{
+   <attribute> : { comparator : 'contains', value : <value> }
+}
+
+```
+
 ## doesNotEqual
 The compared attribute must must not be strictly equal to the value to result in a match.
 
