@@ -18,7 +18,10 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
+    "@rotundasoftware/eslint-config-rotundasoftware": "^4.1.2",
     "chai": "^4.2.0",
+    "eslint": "^8.33.0",
+    "eslint-plugin-mocha": "^10.4.3",
     "mocha": "^6.2.0"
   },
   "dependencies": {
