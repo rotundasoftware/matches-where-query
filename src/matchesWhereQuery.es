@@ -28,7 +28,7 @@ module.exports = function( object, whereQuery ) {
 				if( ! _.isArray( queryAttribute.value ) || queryAttribute.value.length !== 2 ) {
 					throw new Error( 'Value supplied for isBetween comparator must be an array [ min, max ]' );
 				}
-				if( ! objectAttribute ||  objectAttribute < queryAttribute.value[ 0 ] || objectAttribute > queryAttribute.value[ 1 ] ) return false;
+				if( ! objectAttribute || objectAttribute < queryAttribute.value[ 0 ] || objectAttribute > queryAttribute.value[ 1 ] ) return false;
 				break;
 			case 'startsWith':
 				if( ! objectAttribute ) return false;
@@ -43,10 +43,10 @@ module.exports = function( object, whereQuery ) {
 				if( ! _endsWith( objectAttribute, queryAttribute.value ) ) return false;
 				break;
 			case 'isNull':
-				if( ! _.isNull( objectAttribute )  ) return false;
+				if( ! _.isNull( objectAttribute ) ) return false;
 				break;
 			case 'isNotNull':
-				if( _.isNull( objectAttribute )  ) return false;
+				if( _.isNull( objectAttribute ) ) return false;
 				break;
 			case 'contains':
 				if( ! objectAttribute ) return false;

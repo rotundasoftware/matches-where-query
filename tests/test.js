@@ -1,4 +1,3 @@
-var _ = require( 'underscore' );
 var chai = require( 'chai' );
 var matchesWhereQuery = require( '../lib/matchesWhereQuery' );
 var expect = chai.expect;
@@ -20,13 +19,13 @@ describe( 'Matches where query Test', function() {
 	describe( 'Equals (single)', function() {
 		it( 'Match', function() {
 			var comparator = { firstName : 'Martin' };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
 		it( 'Not Match', function() {
 			var comparator = { firstName : 'Marton' };
-			
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
 		} );
 	} );
@@ -34,7 +33,7 @@ describe( 'Matches where query Test', function() {
 	describe( 'Equals (array)', function() {
 		it( 'Match', function() {
 			var comparator = { firstName : [ 'John', 'Peter', 'Martin' ] };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -48,7 +47,7 @@ describe( 'Matches where query Test', function() {
 	describe( 'doesNotEqual', function() {
 		it( 'Match', function() {
 			var comparator = { firstName : { comparator : 'doesNotEqual', value : 'Jonh' } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -62,7 +61,7 @@ describe( 'Matches where query Test', function() {
 	describe( 'isGreaterThan', function() {
 		it( 'Match', function() {
 			var comparator = { height : { comparator : 'isGreaterThan', value : 170 } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -76,7 +75,7 @@ describe( 'Matches where query Test', function() {
 	describe( 'isGreaterThanOrEqualTo', function() {
 		it( 'Match', function() {
 			var comparator = { height : { comparator : 'isGreaterThanOrEqualTo', value : 172 } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -89,7 +88,7 @@ describe( 'Matches where query Test', function() {
 	describe( 'isLessThan', function() {
 		it( 'Match', function() {
 			var comparator = { height : { comparator : 'isLessThan', value : 174 } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -102,7 +101,7 @@ describe( 'Matches where query Test', function() {
 	describe( 'isLessThanOrEqualTo', function() {
 		it( 'Match', function() {
 			var comparator = { height : { comparator : 'isLessThanOrEqualTo', value : 172 } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -115,7 +114,7 @@ describe( 'Matches where query Test', function() {
 	describe( 'isBetween', function() {
 		it( 'Match', function() {
 			var comparator = { height : { comparator : 'isBetween', value : [ 171, 176 ] } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -134,7 +133,7 @@ describe( 'Matches where query Test', function() {
 	describe( 'startsWith', function() {
 		it( 'Simple Match', function() {
 			var comparator = { firstName : { comparator : 'startsWith', value : 'Mar' } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -211,7 +210,7 @@ describe( 'Matches where query Test', function() {
 	describe( 'isNull', function() {
 		it( 'Match', function() {
 			var comparator = { age : { comparator : 'isNull' } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -221,11 +220,11 @@ describe( 'Matches where query Test', function() {
 			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
 		} );
 	} );
-	
+
 	describe( 'isNotNull', function() {
 		it( 'Match', function() {
 			var comparator = { firstName : { comparator : 'isNotNull' } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -235,25 +234,11 @@ describe( 'Matches where query Test', function() {
 			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
 		} );
 	} );
-	
-	describe( 'isNotNull', function() {
-		it( 'Match', function() {
-			var comparator = { firstName : { comparator : 'isNotNull' } };
-	
-			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
-		} );
 
-		it( 'Not Match', function() {
-			var comparator = { age : { comparator : 'isNotNull' } };
-
-			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
-		} );
-	} );
-	
 	describe( 'contains', function() {
 		it( 'Match - when string', function() {
 			var comparator = { firstName : { comparator : 'contains', value : 'ar' } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
@@ -265,11 +250,11 @@ describe( 'Matches where query Test', function() {
 
 		it( 'Match - when array', function() {
 			var comparator = { permissions : { comparator : 'contains', value : 'read' } };
-	
+
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
-		it( 'Not Match - when string', function() {
+		it( 'Not Match - when array', function() {
 			var comparator = { permissions : { comparator : 'contains', value : 'delete' } };
 
 			expect( matchesWhereQuery( person, comparator ) ).to.be.false;

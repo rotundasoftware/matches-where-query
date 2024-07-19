@@ -1,8 +1,6 @@
 {
-	"extends" : "@rotundasoftware/eslint-config-rotundasoftware",
-	"plugins": [
-        "mocha"
-	],
+	"extends" : ["@rotundasoftware/eslint-config-rotundasoftware", "plugin:mocha/recommended"],
+	"plugins": ["mocha"],
 	"rules" : {
         "mocha/no-exclusive-tests": "error"
 	}
