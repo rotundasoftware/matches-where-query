@@ -248,13 +248,13 @@ describe( 'Matches where query Test', function() {
 	} );
 
 	describe( 'contains', function() {
-		it( 'Match - when attribute is string', function() {
+		it( 'Match - when attribute is string and value is string', function() {
 			var comparator = { firstName : { comparator : 'contains', value : 'ar' } };
 
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
-		it( 'Not Match - when attribute is string', function() {
+		it( 'Not Match - when attribute is string and value is string', function() {
 			var comparator = { firstName : { comparator : 'contains', value : 'no' } };
 
 			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
