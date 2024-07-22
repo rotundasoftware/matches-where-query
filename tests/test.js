@@ -254,12 +254,6 @@ describe( 'Matches where query Test', function() {
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
-		it( 'Not Match - when attribute is string and value is string', function() {
-			var comparator = { firstName : { comparator : 'contains', value : 'no' } };
-
-			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
-		} );
-
 		it( 'Match - when attribute is array and value is string', function() {
 			var comparator = { permissions : { comparator : 'contains', value : 'read' } };
 
@@ -276,6 +270,12 @@ describe( 'Matches where query Test', function() {
 			var comparator = { childrenElements : { comparator : 'contains', value : { id : 1, type : 'folder' } } };
 
 			expect( matchesWhereQuery( folder, comparator ) ).to.be.true;
+		} );
+
+		it( 'Not Match - when attribute is string and value is string', function() {
+			var comparator = { firstName : { comparator : 'contains', value : 'no' } };
+
+			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
 		} );
 
 		it( 'Not Match - when attribute is array and value is string', function() {

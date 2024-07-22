@@ -50,9 +50,9 @@ module.exports = function( object, whereQuery ) {
 				break;
 			case 'contains':
 				if( ! objectAttribute ) return false;
-				if ( _.isString( objectAttribute ) ) {
+				if( _.isString( objectAttribute ) ) {
 					return objectAttribute.includes( queryAttribute.value );
-				} else if ( _.isArray( objectAttribute ) ) {
+				} else if( _.isArray( objectAttribute ) ) {
 					return objectAttribute.some( value => _.isEqual( value, queryAttribute.value ) );
 				} else {
 					return false;
