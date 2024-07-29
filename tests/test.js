@@ -3,9 +3,21 @@ var matchesWhereQuery = require( '../lib/matchesWhereQuery' );
 var expect = chai.expect;
 
 describe( 'Matches where query Test', function() {
+	var folder;
 	var person;
 
 	beforeEach( function() {
+		folder = {
+			childrenElements : [
+				{ id : 1, type : 'folder' },
+				{ id : 2, type : 'opportunity' }
+			],
+			miscArray : [
+				[ 1, 2, 3 ],
+				[ 4, 5, 6 ]
+			]
+		};
+
 		person = {
 			firstName : 'Martin',
 			lastName : 'Flores',
@@ -236,28 +248,52 @@ describe( 'Matches where query Test', function() {
 	} );
 
 	describe( 'contains', function() {
-		it( 'Match - when string', function() {
+		it( 'Match - when attribute is string and value is string', function() {
 			var comparator = { firstName : { comparator : 'contains', value : 'ar' } };
 
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
-		it( 'Not Match - when string', function() {
-			var comparator = { firstName : { comparator : 'contains', value : 'no' } };
-
-			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
-		} );
-
-		it( 'Match - when array', function() {
+		it( 'Match - when attribute is array and value is string', function() {
 			var comparator = { permissions : { comparator : 'contains', value : 'read' } };
 
 			expect( matchesWhereQuery( person, comparator ) ).to.be.true;
 		} );
 
-		it( 'Not Match - when array', function() {
+		it( 'Match - when attribute is array and value is array', function() {
+			var comparator = { miscArray : { comparator : 'contains', value : [ 4, 5, 6 ] } };
+
+			expect( matchesWhereQuery( folder, comparator ) ).to.be.true;
+		} );
+
+		it( 'Match - when attribute is array and value is object', function() {
+			var comparator = { childrenElements : { comparator : 'contains', value : { id : 1, type : 'folder' } } };
+
+			expect( matchesWhereQuery( folder, comparator ) ).to.be.true;
+		} );
+
+		it( 'Not Match - when attribute is string and value is string', function() {
+			var comparator = { firstName : { comparator : 'contains', value : 'no' } };
+
+			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
+		} );
+
+		it( 'Not Match - when attribute is array and value is string', function() {
 			var comparator = { permissions : { comparator : 'contains', value : 'delete' } };
 
 			expect( matchesWhereQuery( person, comparator ) ).to.be.false;
+		} );
+
+		it( 'Not Match - when attribute is array and value is array', function() {
+			var comparator = { miscArray : { comparator : 'contains', value : [ 7, 8, 9 ] } };
+
+			expect( matchesWhereQuery( folder, comparator ) ).to.be.false;
+		} );
+
+		it( 'Not Match - when attribute is array and value is object', function() {
+			var comparator = { childrenElements : { comparator : 'contains', value : { id : 3, type : 'folder' } } };
+
+			expect( matchesWhereQuery( folder, comparator ) ).to.be.false;
 		} );
 	} );
 } );

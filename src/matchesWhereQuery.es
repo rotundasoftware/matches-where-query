@@ -50,9 +50,13 @@ module.exports = function( object, whereQuery ) {
 				break;
 			case 'contains':
 				if( ! objectAttribute ) return false;
-				if( ! _.isString( objectAttribute ) && ! _.isArray( objectAttribute ) ) return false;
-				if( ! objectAttribute.includes( queryAttribute.value ) ) return false;
-				break;
+				if( _.isString( objectAttribute ) ) {
+					return objectAttribute.includes( queryAttribute.value );
+				} else if( _.isArray( objectAttribute ) ) {
+					return objectAttribute.some( value => _.isEqual( value, queryAttribute.value ) );
+				} else {
+					return false;
+				}
 			default:
 				throw new Error ( 'Invalid comparator ' + queryAttribute.comparator );
 			}
