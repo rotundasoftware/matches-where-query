@@ -38,7 +38,7 @@ If the attribute is is an array, only records for which `object.attribute` is st
 
 ## contains
 
-The compared attribute must be a string that contains the provided value, or an array that has at least one element strictly equal to the provided value.
+The compared attribute must be a string that contains the provided value, or an array that has at least one element equal to the provided value. In case the attribute is an array, uses `_.isEqual` to perform an optimized deep comparison between the array items and the provided value, to determine if they should be considered equal, allowing to match objects in arrays of objects.
 
 ```
 {
