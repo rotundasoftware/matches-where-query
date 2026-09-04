@@ -2,6 +2,16 @@
 
 This function determines if the provided `object` matches every comparison clause in `whereQuery`, returning `true` or `false` accordingly.
 
+## Installation
+
+This package is privately maintained as `@rotundasoftware/matches-where-query`. Installation requires npm authentication and access to the `rotundasoftware` organization.
+
+```
+npm install @rotundasoftware/matches-where-query
+```
+
+The previous public `matches-where-query` package is retained for existing dependants but will not receive new versions.
+
 `whereQuery` is an object of the form:
 
 

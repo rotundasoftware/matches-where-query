@@ -1,7 +1,11 @@
 {
-  "name": "matches-where-query",
+  "name": "@rotundasoftware/matches-where-query",
   "version": "2.0.7",
   "main": "lib/matchesWhereQuery.js",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "prepublishOnly": "npm install --only=dev && babel src -d lib",
     "test": "babel src -d lib && mocha tests/test.js --reporter spec",
