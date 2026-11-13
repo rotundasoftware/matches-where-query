@@ -2,6 +2,10 @@
   "name": "@rotundasoftware/matches-where-query",
   "version": "2.0.7",
   "main": "lib/matchesWhereQuery.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rotundasoftware/matches-where-query.git"
+  },
   "publishConfig": {
     "access": "restricted",
     "registry": "https://registry.npmjs.org/"
